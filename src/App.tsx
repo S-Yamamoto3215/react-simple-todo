@@ -18,10 +18,7 @@ const App = () => {
 
         <TodoItem />
 
-        {/* CompletedClearBtton */}
-        <div className='CompletedClearBtton'>
-          <button>CompletedClearBtton</button>
-        </div>
+        <CompletedClearBtton />
       </div>
     </div>
   );
@@ -44,6 +41,14 @@ const TodoItem = () => {
     <div className='TodoItem'>
       <input type="checkbox" name="todoItem" id="aaa" />
       ここにTodoの内容が入ります
+    </div>
+  );
+}
+
+const CompletedClearBtton = () => {
+  return (
+    <div className='CompletedClearBtton'>
+      <button>CompletedClearBtton</button>
     </div>
   );
 }
