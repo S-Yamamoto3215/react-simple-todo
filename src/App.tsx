@@ -50,10 +50,22 @@ const FilteringMenu = () => {
 }
 
 const TodoItem = () => {
+  type TodoType = {
+    id: string;
+    content: string;
+    isCompleted: boolean;
+  }
+
+  const todo: TodoType = {
+    id: "1",
+    content: 'タスクA',
+    isCompleted: false,
+  }
+
   return (
     <div className='TodoItem'>
-      <input type="checkbox" name="todoItem" id="aaa" />
-      ここにTodoの内容が入ります
+      <input type="checkbox" name="todoItem" id={todo.id}  checked={todo.isCompleted} />
+      {todo.content}
     </div>
   );
 }
