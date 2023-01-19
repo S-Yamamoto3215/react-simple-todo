@@ -3,15 +3,22 @@ import React from 'react';
 const App = () => {
   return (
     <div className="App">
-      <h1>ToDo List</h1>
-      <TodoInputField />
-
-      <TodoList />
+      <TodoListBase />
     </div>
   );
 }
 
 export default App;
+
+const TodoListBase = () => {
+  return (
+    <div className='TodoListBase'>
+      <h1>ToDo List</h1>
+      <TodoInputField />
+      <TodoList />
+    </div>
+  );
+}
 
 const TodoInputField = () => {
   return (
