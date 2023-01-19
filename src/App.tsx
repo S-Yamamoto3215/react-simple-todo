@@ -14,11 +14,7 @@ const App = () => {
       <div className='TodoList'>
 
         {/* FilteringMenu */}
-        <div className='FilteringMenu'>
-          <button>All</button>
-          <button>Active</button>
-          <button>Completed</button>
-        </div>
+        <FilteringMenu />
 
         <TodoItem />
 
@@ -32,6 +28,16 @@ const App = () => {
 }
 
 export default App;
+
+const FilteringMenu = () => {
+  return (
+    <div className='FilteringMenu'>
+      <button>All</button>
+      <button>Active</button>
+      <button>Completed</button>
+    </div>
+  );
+}
 
 const TodoItem = () => {
   return (
