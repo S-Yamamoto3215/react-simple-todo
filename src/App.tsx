@@ -20,19 +20,7 @@ const App = () => {
           <button>Completed</button>
         </div>
 
-        {/* TodoItem */}
-        <div className='TodoItem'>
-          <input type="checkbox" name="todoItem" id="aaa" />
-          ここにTodoの内容が入ります
-        </div>
-        <div className='TodoItem'>
-          <input type="checkbox" name="todoItem" id="aaa" />
-          ここにTodoの内容が入ります
-        </div>
-        <div className='TodoItem'>
-          <input type="checkbox" name="todoItem" id="aaa" />
-          ここにTodoの内容が入ります
-        </div>
+        <TodoItem />
 
         {/* CompletedClearBtton */}
         <div className='CompletedClearBtton'>
@@ -44,3 +32,12 @@ const App = () => {
 }
 
 export default App;
+
+const TodoItem = () => {
+  return (
+    <div className='TodoItem'>
+      <input type="checkbox" name="todoItem" id="aaa" />
+      ここにTodoの内容が入ります
+    </div>
+  );
+}
