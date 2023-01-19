@@ -4,11 +4,7 @@ const App = () => {
   return (
     <div className="App">
       <h1>ToDo List</h1>
-      {/* TodoInputField */}
-      <div className='TodoInputField'>
-        <input type="text" placeholder='e.x) 〇〇をする'/>
-        <button>→</button>
-      </div>
+      <TodoInputField />
 
       <TodoList />
     </div>
@@ -16,6 +12,15 @@ const App = () => {
 }
 
 export default App;
+
+const TodoInputField = () => {
+  return (
+    <div className='TodoInputField'>
+      <input type="text" placeholder='e.x) 〇〇をする'/>
+      <button>→</button>
+    </div>
+  );
+}
 
 const TodoList = () => {
   return (
