@@ -1,10 +1,14 @@
 import React from 'react';
 
+import { ChakraProvider } from '@chakra-ui/react'
+
 const App = () => {
   return (
-    <div className="App">
-      <TodoListBase />
-    </div>
+    <ChakraProvider>
+      <div className="App">
+        <TodoListBase />
+      </div>
+    </ChakraProvider>
   );
 }
 
