@@ -1,4 +1,4 @@
-import { TodoType } from "../type/Todo";
+import { TodoType } from "../../type/Todo";
 
 type TodoItemType = (props: TodoType) => JSX.Element;
 
