@@ -2,6 +2,8 @@ import React from 'react';
 
 import { ChakraProvider } from '@chakra-ui/react'
 
+import { TodoItem } from "./components/TodoItem";
+
 const App = () => {
   return (
     <ChakraProvider>
@@ -70,16 +72,6 @@ const FilteringMenu = () => {
   );
 }
 
-type TodoItemProps = TodoType;
-type TodoItemType = (props: TodoItemProps) => JSX.Element;
-const TodoItem: TodoItemType = ({id, content, isCompleted}) => {
-  return (
-    <li id={`todoItem-${id}`} className='TodoItem'>
-      <input type="checkbox" name="todoItem" defaultChecked={isCompleted} />
-      {content}
-    </li>
-  );
-}
 
 const CompletedClearBtton = () => {
   return (
