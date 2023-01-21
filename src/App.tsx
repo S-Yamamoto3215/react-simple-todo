@@ -4,6 +4,7 @@ import { ChakraProvider } from '@chakra-ui/react'
 
 import { TodoItem } from "./components/TodoItem";
 import { FilteringMenu } from "./components/FilteringMenu";
+import { CompletedClearBtton } from "./components/CompletedClearBtton";
 
 const App = () => {
   return (
@@ -59,14 +60,6 @@ const TodoList = () => {
         {todoData.map((todo) => <TodoItem key={todo.id} id={todo.id} content={todo.content} isCompleted={todo.isCompleted} />)}
       </ul>
       <CompletedClearBtton />
-    </div>
-  );
-}
-
-const CompletedClearBtton = () => {
-  return (
-    <div className='CompletedClearBtton'>
-      <button>CompletedClearBtton</button>
     </div>
   );
 }
