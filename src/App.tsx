@@ -5,6 +5,7 @@ import { ChakraProvider } from '@chakra-ui/react'
 import { TodoItem } from "./components/TodoItem";
 import { FilteringMenu } from "./components/FilteringMenu";
 import { CompletedClearBtton } from "./components/CompletedClearBtton";
+import { TodoInputField } from "./components/TodoInputField";
 
 const App = () => {
   return (
@@ -32,15 +33,6 @@ const TodoListBase = () => {
       <h1>ToDo List</h1>
       <TodoInputField />
       <TodoList />
-    </div>
-  );
-}
-
-const TodoInputField = () => {
-  return (
-    <div className='TodoInputField'>
-      <input type="text" placeholder='e.x) 〇〇をする'/>
-      <button>→</button>
     </div>
   );
 }
