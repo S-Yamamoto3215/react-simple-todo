@@ -3,6 +3,7 @@ import React from 'react';
 import { ChakraProvider } from '@chakra-ui/react'
 
 import { TodoItem } from "./components/TodoItem";
+import { FilteringMenu } from "./components/FilteringMenu";
 
 const App = () => {
   return (
@@ -61,17 +62,6 @@ const TodoList = () => {
     </div>
   );
 }
-
-const FilteringMenu = () => {
-  return (
-    <div className='FilteringMenu'>
-      <button>All</button>
-      <button>Active</button>
-      <button>Completed</button>
-    </div>
-  );
-}
-
 
 const CompletedClearBtton = () => {
   return (
