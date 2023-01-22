@@ -23,7 +23,10 @@ export const TodoList = () => {
       <List spacing={3}>
         {todoData.map((todo) => <TodoItem key={todo.id} id={todo.id} content={todo.content} isCompleted={todo.isCompleted} />)}
       </List>
-      <CompletedClearBtton />
+      <Flex>
+        <Spacer />
+        <CompletedClearBtton />
+      </Flex>
     </>
   );
 }
