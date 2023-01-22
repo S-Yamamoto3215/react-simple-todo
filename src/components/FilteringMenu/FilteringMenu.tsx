@@ -1,9 +1,23 @@
+import { ChevronDownIcon } from '@chakra-ui/icons';
+import {
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  Button,
+} from '@chakra-ui/react'
+
 export const FilteringMenu = () => {
   return (
-    <div className='FilteringMenu'>
-      <button>All</button>
-      <button>Active</button>
-      <button>Completed</button>
-    </div>
+    <Menu>
+      <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+        Actions
+      </MenuButton>
+      <MenuList>
+        <MenuItem>All</MenuItem>
+        <MenuItem>Active</MenuItem>
+        <MenuItem>Completed</MenuItem>
+      </MenuList>
+    </Menu>
   );
 }
