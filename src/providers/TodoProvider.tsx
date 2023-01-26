@@ -20,7 +20,7 @@ type TodoProviderValueType = {
   completedAllDelete: () => void;
 }
 
-const TodoContext = createContext<TodoProviderValueType>({
+export const TodoContext = createContext<TodoProviderValueType>({
   todos: [],
   addTodo: function (content: string): void {
     throw new Error('Function not implemented.');
