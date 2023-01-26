@@ -1,12 +1,20 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { AddIcon } from '@chakra-ui/icons';
 import { Button, Input, InputGroup, InputRightElement } from '@chakra-ui/react'
 
+import { TodoContext } from "../../providers/TodoProvider";
+
 export const TodoInputField = () => {
+  const { addTodo } = useContext(TodoContext);
   const [inputValue, setInputValue] = useState<string>('')
 
   const inputOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value)
+  }
+
+  const onClickAddButton = () => {
+    addTodo(inputValue)
+    setInputValue('')
   }
 
   return (
@@ -17,7 +25,7 @@ export const TodoInputField = () => {
         onChange={inputOnChange}
       />
       <InputRightElement>
-        <Button>
+        <Button onClick={onClickAddButton}>
           <AddIcon />
         </Button>
       </InputRightElement>
