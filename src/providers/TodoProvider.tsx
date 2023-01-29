@@ -1,13 +1,8 @@
 import { createContext, FC, ReactNode, useState } from 'react';
 
-import { TodoListType } from "../type/Todo";
+import { v4 as uuidv4 } from 'uuid';
 
-const todoData: TodoListType = [
-  {id: "1", content: 'タスクA', isCompleted: false},
-  {id: "2", content: 'タスクB', isCompleted: false},
-  {id: "3", content: 'タスクC', isCompleted: true},
-  {id: "4", content: 'タスクD', isCompleted: false},
-];
+import { TodoListType } from "../type/Todo";
 
 type TodoProviderPropsType = {
   children: ReactNode;
@@ -34,11 +29,11 @@ export const TodoContext = createContext<TodoProviderValueType>({
 });
 
 export const TodoProvider: FC<TodoProviderPropsType> = ({ children }) => {
-  const [todos, setTodos] = useState<TodoListType>(todoData);
+  const [todos, setTodos] = useState<TodoListType>([]);
 
   const addTodo = (content: string) => {
     const newTodo = {
-      id: String(todos.length + 1),
+      id: uuidv4(),
       content,
       isCompleted: false,
     };
