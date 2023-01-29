@@ -15,6 +15,12 @@ export const TodoInputField = () => {
     setInputValue(e.target.value)
   }
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      onClickAddButton()
+    }
+  }
+
   const onClickAddButton = () => {
     if (inputValue === '') {
       setIsError(true)
@@ -32,6 +38,7 @@ export const TodoInputField = () => {
         placeholder='e.x) 〇〇をする'
         value={inputValue}
         onChange={inputOnChange}
+        onKeyDown={handleKeyDown}
       />
       <InputRightElement>
         <Button onClick={onClickAddButton}>
