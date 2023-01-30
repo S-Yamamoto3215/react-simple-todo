@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 import {
   Menu,
@@ -8,26 +8,28 @@ import {
   Button,
 } from '@chakra-ui/react'
 
-type FilteringMenuType = 'all' | 'active' | 'completed';
-const filteringMenuList: FilteringMenuType[] = ['all', 'active', 'completed'];
+import { TodoFilterType } from "../../type/Todo";
+import { TodoContext } from "../../providers/TodoProvider";
+
+const filteringMenuList: TodoFilterType[] = ['all', 'active', 'completed'];
 
 const toUpperCaseCharOne = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 
 export const FilteringMenu = () => {
-  const [currentMenu, setCurrentMenu] = useState<FilteringMenuType>('all');
+  const { filter, setFilter } = useContext(TodoContext);
 
   return (
     <Menu>
       <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-        {toUpperCaseCharOne(currentMenu)}
+        {toUpperCaseCharOne(filter)}
       </MenuButton>
       <MenuList>
         {filteringMenuList.map((menu) => {
-          const isCurrentMenu = currentMenu === menu;
+          const isCurrentMenu = filter === menu;
           return (
             <MenuItem
               key={menu}
-              onClick={() => setCurrentMenu(menu)}
+              onClick={() => setFilter(menu)}
               isDisabled={isCurrentMenu}
             >
               {toUpperCaseCharOne(menu)}

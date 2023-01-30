@@ -9,7 +9,7 @@ import { TodoContext } from "../../providers/TodoProvider";
 
 
 export const TodoList = () => {
-  const { todos } = useContext(TodoContext);
+  const { todos, fillterTodos, filter } = useContext(TodoContext);
 
   return (
     <>
@@ -18,7 +18,7 @@ export const TodoList = () => {
         <FilteringMenu />
       </Flex>
       <List spacing={3}>
-        {todos.map((todo) => <TodoItem key={todo.id} id={todo.id} content={todo.content} isCompleted={todo.isCompleted} />)}
+        {fillterTodos(todos, filter).map((todo) => <TodoItem key={todo.id} id={todo.id} content={todo.content} isCompleted={todo.isCompleted} />)}
       </List>
       <Flex>
         <Spacer />
