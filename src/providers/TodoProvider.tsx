@@ -2,7 +2,7 @@ import { createContext, FC, ReactNode, useState } from 'react';
 
 import { v4 as uuidv4 } from 'uuid';
 
-import { TodoListType } from "../type/Todo";
+import { TodoListType, TodoFilterType } from "../type/Todo";
 
 type TodoProviderPropsType = {
   children: ReactNode;
@@ -10,13 +10,20 @@ type TodoProviderPropsType = {
 
 type TodoProviderValueType = {
   todos: TodoListType;
+  filter: TodoFilterType;
+  setFilter: (filter: TodoFilterType) => void;
   addTodo: (content: string) => void;
   toggleTodo: (id: string) => void;
   completedAllDelete: () => void;
+  fillterTodos: (todos: TodoListType, filter: TodoFilterType) => TodoListType;
 }
 
 export const TodoContext = createContext<TodoProviderValueType>({
   todos: [],
+  filter: 'all',
+  setFilter: function (filter: TodoFilterType): void {
+    throw new Error('Function not implemented.');
+  },
   addTodo: function (content: string): void {
     throw new Error('Function not implemented.');
   },
@@ -25,11 +32,15 @@ export const TodoContext = createContext<TodoProviderValueType>({
   },
   completedAllDelete: function (): void {
     throw new Error('Function not implemented.');
+  },
+  fillterTodos: function (todos: TodoListType, filter: TodoFilterType): TodoListType {
+    throw new Error('Function not implemented.');
   }
 });
 
 export const TodoProvider: FC<TodoProviderPropsType> = ({ children }) => {
   const [todos, setTodos] = useState<TodoListType>([]);
+  const [filter, setFilter] = useState<TodoFilterType>('all');
 
   const addTodo = (content: string) => {
     const newTodo = {
@@ -58,8 +69,19 @@ export const TodoProvider: FC<TodoProviderPropsType> = ({ children }) => {
     setTodos(newTodos);
   }
 
+  const fillterTodos = (todos: TodoListType, filter: TodoFilterType) => {
+    switch (filter) {
+      case 'all':
+        return todos;
+      case 'active':
+        return todos.filter(todo => !todo.isCompleted);
+      case 'completed':
+        return todos.filter(todo => todo.isCompleted);
+    }
+  }
+
   return (
-    <TodoContext.Provider value={{ todos, addTodo, toggleTodo, completedAllDelete }}>
+    <TodoContext.Provider value={{ todos, addTodo, toggleTodo, completedAllDelete, filter, setFilter, fillterTodos }}>
       { children }
     </TodoContext.Provider>
   );

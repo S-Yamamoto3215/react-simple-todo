@@ -5,3 +5,5 @@ export type TodoType = {
 }
 
 export type TodoListType = TodoType[];
+
+export type TodoFilterType = 'all' | 'active' | 'completed';
