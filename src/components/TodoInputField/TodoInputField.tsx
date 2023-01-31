@@ -5,31 +5,12 @@ import { Button, Input, InputGroup, InputRightElement } from '@chakra-ui/react'
 import { AlertBox } from "../AlertBox";
 import { TodoContext } from "../../providers/TodoProvider";
 
+import { inputOnChange, handleKeyDown, onClickAddButton } from "./functions";
+
 export const TodoInputField = () => {
   const { addTodo } = useContext(TodoContext);
   const [inputValue, setInputValue] = useState<string>('')
   const [isError, setIsError] = useState<boolean>(false)
-
-  const inputOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    isError && setIsError(false)
-    setInputValue(e.target.value)
-  }
-
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
-      onClickAddButton()
-    }
-  }
-
-  const onClickAddButton = () => {
-    if (inputValue === '') {
-      setIsError(true)
-    } else {
-      addTodo(inputValue)
-      setInputValue('')
-      setIsError(false)
-    }
-  }
 
   return (
     <>
@@ -37,11 +18,11 @@ export const TodoInputField = () => {
       <Input
         placeholder='e.x) 〇〇をする'
         value={inputValue}
-        onChange={inputOnChange}
-        onKeyDown={handleKeyDown}
+        onChange={(e) => inputOnChange(e, isError, setIsError, setInputValue)}
+        onKeyDown={(e) => handleKeyDown(e, inputValue, setIsError, addTodo, setInputValue)}
       />
       <InputRightElement>
-        <Button onClick={onClickAddButton}>
+        <Button onClick={() => onClickAddButton(inputValue, setIsError, addTodo, setInputValue)}>
           <AddIcon />
         </Button>
       </InputRightElement>

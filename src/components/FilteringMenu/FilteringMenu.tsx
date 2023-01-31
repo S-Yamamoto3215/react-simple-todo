@@ -11,9 +11,10 @@ import {
 import { TodoFilterType } from "../../type/Todo";
 import { TodoContext } from "../../providers/TodoProvider";
 
+import { toUpperCaseCharOne } from "../../functions";
+
 const filteringMenuList: TodoFilterType[] = ['all', 'active', 'completed'];
 
-const toUpperCaseCharOne = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 
 export const FilteringMenu = () => {
   const { filter, setFilter } = useContext(TodoContext);
