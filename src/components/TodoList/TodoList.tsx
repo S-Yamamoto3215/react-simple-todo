@@ -18,7 +18,17 @@ export const TodoList = () => {
         <FilteringMenu />
       </Flex>
       <List spacing={3}>
-        {fillterTodos(todos, filter).map((todo) => <TodoItem key={todo.id} id={todo.id} content={todo.content} isCompleted={todo.isCompleted} />)}
+        {fillterTodos(todos, filter).map((todo) => {
+          return (
+            <TodoItem
+              key={todo.id}
+              id={todo.id}
+              content={todo.content}
+              isCompleted={todo.isCompleted}
+              creationDate={todo.creationDate}
+            />
+          );
+        })}
       </List>
       <Flex>
         <Spacer />
