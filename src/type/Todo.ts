@@ -2,6 +2,7 @@ export type TodoType = {
   id: string;
   content: string;
   isCompleted: boolean;
+  creationDate: string;
 }
 
 export type TodoListType = TodoType[];

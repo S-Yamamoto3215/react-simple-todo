@@ -1,6 +1,7 @@
 import { createContext, FC, ReactNode, useState } from 'react';
 
 import { v4 as uuidv4 } from 'uuid';
+import { format } from 'date-fns'
 
 import { TodoListType, TodoFilterType } from "../type/Todo";
 
@@ -47,6 +48,7 @@ export const TodoProvider: FC<TodoProviderPropsType> = ({ children }) => {
       id: uuidv4(),
       content,
       isCompleted: false,
+      creationDate: format(new Date(), 'yyyy-MM-dd')
     };
     setTodos([...todos, newTodo]);
   }
