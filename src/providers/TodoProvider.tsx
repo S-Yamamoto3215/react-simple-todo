@@ -17,7 +17,6 @@ type TodoProviderValueType = {
   toggleTodo: (id: string) => void;
   completedAllDelete: () => void;
   fillterTodos: (todos: TodoListType, filter: TodoFilterType) => TodoListType;
-  progressRateCalc: () => number;
 }
 
 export const TodoContext = createContext<TodoProviderValueType>({
@@ -38,9 +37,6 @@ export const TodoContext = createContext<TodoProviderValueType>({
   fillterTodos: function (todos: TodoListType, filter: TodoFilterType): TodoListType {
     throw new Error('Function not implemented.');
   },
-  progressRateCalc: function (): number {
-    throw new Error('Function not implemented.');
-  }
 });
 
 export const TodoProvider: FC<TodoProviderPropsType> = ({ children }) => {
@@ -86,17 +82,8 @@ export const TodoProvider: FC<TodoProviderPropsType> = ({ children }) => {
     }
   }
 
-  const progressRateCalc = () => {
-    const completedTodos = todos.filter(todo => todo.isCompleted);
-    if (completedTodos.length === 0) {
-      return 0;
-    }
-    const progressRate = completedTodos.length / todos.length * 100;
-    return progressRate;
-  }
-
   return (
-    <TodoContext.Provider value={{ todos, addTodo, toggleTodo, completedAllDelete, filter, setFilter, fillterTodos, progressRateCalc }}>
+    <TodoContext.Provider value={{ todos, addTodo, toggleTodo, completedAllDelete, filter, setFilter, fillterTodos }}>
       { children }
     </TodoContext.Provider>
   );
